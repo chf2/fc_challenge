@@ -36,20 +36,20 @@ describe MultiplicationTablePrinter do
       # 3
       # 5
       # 7
-      expect(printer.table_entry_for_cell(4, 0).to_i).to eq(7)
+      expect(printer.table_entry_for_cell(4, 0)).to eq(7)
     end
 
     it 'gives correct number for second to last column header' do
       # - | 2 | 3 | 5 | 7
-      expect(printer.table_entry_for_cell(0, 3).to_i).to eq(5)
+      expect(printer.table_entry_for_cell(0, 3)).to eq(5)
     end
 
     it 'gives correct cross-multiplication' do
-      expect(printer.table_entry_for_cell(1, 2).to_i).to eq(6)
+      expect(printer.table_entry_for_cell(1, 2)).to eq(6)
     end
 
     it 'calculates maximum cross correctly' do
-      expect(printer.table_entry_for_cell(4, 4).to_i).to eq(49)
+      expect(printer.table_entry_for_cell(4, 4)).to eq(49)
     end
   end
 

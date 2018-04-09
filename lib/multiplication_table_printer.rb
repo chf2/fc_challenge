@@ -1,6 +1,6 @@
-# Given a list of N numbers, prints a multiplication table where the first element
-# of each row and the column headers are the list of numbers, and each cell within
-# those borders labeled i, j is the multiplication list[i] * list[j].
+# Given a list of N numbers, prints an (N + 1)x(N + 1) multiplication table where
+# the first element of each row and the column headers are the list of numbers,
+# and each cell within those borders labeled i, j is the multiplication list[i] * list[j].
 #
 # Example output to STDOUT:
 #  - |  2 |  3 |  5
@@ -30,7 +30,8 @@ class MultiplicationTablePrinter
     # and then printing it multiplied by the column header number in each column.
     list_to_print.each_index do |row|
       list_of_multiples = list_to_print.map.with_index do |_, column|
-        table_entry_for_cell(row, column)
+        entry = table_entry_for_cell(row, column)
+        get_justified_string(entry, column)
       end
       puts list_of_multiples.join(' | ')
     end
@@ -38,14 +39,16 @@ class MultiplicationTablePrinter
     nil
   end
 
+  # The reason that #table_entry_for_cell and #get_justified_string are separate is to allow for
+  # correctness testing of the table entries without having to re-parse the formatted string into
+  # an integer.
   def table_entry_for_cell(row, column)
     if row == 0 && column == 0
       # Special handling for the top-left character, replacing a '1' entry.
-      table_entry = '-'
+      '-'
     else
-      table_entry = list_to_print[row] * list_to_print[column]
+      list_to_print[row] * list_to_print[column]
     end
-    get_justified_string(table_entry, column)
   end
 
   def get_justified_string(entry, column)
