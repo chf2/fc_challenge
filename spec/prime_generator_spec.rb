@@ -2,7 +2,7 @@ require_relative '../lib/prime_generator'
 
 describe PrimeGenerator do
   describe '#list_of_primes' do
-    # start by testing corner/base cases, then a more complex case
+    # start by testing corner/base cases, then two more complex cases
     it 'returns correct results for 0-prime case' do
       generator = PrimeGenerator.new(0)
       expect(generator.list_of_primes).to eq([])
@@ -23,7 +23,6 @@ describe PrimeGenerator do
       expect(generator.list_of_primes).to match_array([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
     end
 
-    # this larger test case is to ensure that the sieve resizing works correctly
     it 'returns correct results for 100 primes' do
       generator = PrimeGenerator.new(100)
       first_100_primes = File.readlines('spec/first_100_primes.txt').map(&:to_i)

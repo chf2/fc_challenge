@@ -23,9 +23,6 @@ describe MultiplicationTablePrinter do
     # Since the main output of this program is to STDOUT and we are deliberately not calculating
     # the entire matrix to print, the primary correctness test for the multiplication table is that
     # we get the right entry to print for each cell in the table.
-    #
-    # Because table_entry_for_cell returns a formatted string, call #to_i to test numeric value.
-    # This is tested/validated in the #get_justified_string tests
     it 'gives correct special first character entry' do
       expect(printer.table_entry_for_cell(0, 0)).to eq('-')
     end
@@ -58,7 +55,6 @@ describe MultiplicationTablePrinter do
     let(:column) { 4 }
     let(:max_width) { 5 }
     before do
-      # Arbitrary mapping of column number to width
       allow(printer).to receive(:column_widths).and_return(column => max_width)
     end
 
