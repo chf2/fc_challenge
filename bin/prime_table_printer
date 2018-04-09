@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/prime_generator'
+require_relative '../lib/multiplication_table_printer'
+
+if ARGV.empty?
+  num_primes = 10
+else
+  num_primes = ARGV.shift.to_i
+end
+list_of_primes = PrimeGenerator.new(num_primes).list_of_primes
+MultiplicationTablePrinter.new(list_of_primes).print_table
